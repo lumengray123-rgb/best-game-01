@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMBERWARDEN — Hold the Light</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="game" width="1280" height="720"></canvas>
+
+  <!-- In-game HUD -->
+  <div id="hud" class="hidden">
+    <div id="hud-top">
+      <div class="hud-left">
+        <div class="bar-label"><span>HP</span><span id="hp-text">100 / 100</span></div>
+        <div class="bar hp-bar"><div id="hp-fill"></div></div>
+        <div class="bar-label"><span>EMBER <b id="level-text">LV 1</b></span><span id="xp-text">0 / 5</span></div>
+        <div class="bar xp-bar"><div id="xp-fill"></div></div>
+      </div>
+      <div class="hud-center">
+        <div id="timer">00:00</div>
+        <div id="surge-label">NIGHT 1</div>
+      </div>
+      <div class="hud-right">
+        <div class="stat"><span class="stat-label">SCORE</span><span id="score-text">0</span></div>
+        <div class="stat"><span class="stat-label">SLAIN</span><span id="kills-text">0</span></div>
+        <div class="stat"><span class="stat-label">DASH</span><span id="dash-text">READY</span></div>
+      </div>
+    </div>
+    <div id="banner" class="hidden"></div>
+    <div id="boss-hint" class="hidden"></div>
+  </div>
+
+  <!-- Damage vignette -->
+  <div id="vignette"></div>
+
+  <!-- Title screen -->
+  <div id="title" class="overlay">
+    <div class="panel title-panel">
+      <div class="ember-glyph">✦</div>
+      <h1>EMBERWARDEN</h1>
+      <p class="tagline">The last light is yours to hold. The Hollow come at dusk —<br>burn them back, gather their embers, and survive the night.</p>
+      <button id="start-btn" class="btn btn-primary">▶ &nbsp;KINDLE THE FLAME</button>
+      <div class="controls-grid">
+        <div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>move</span></div>
+        <div><kbd>SPACE</kbd><span>dash toward mouse</span></div>
+        <div><kbd>CLICK</kbd><span>dash toward mouse</span></div>
+        <div><kbd>P</kbd><span>pause</span></div>
+        <div><kbd>M</kbd><span>mute</span></div>
+        <div><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><span>pick upgrade</span></div>
+      </div>
+      <p class="hint">Your ember bolts fire on their own — you move, you dodge, you choose how to grow.<br>Every 60 seconds the Hollow surge. How long can you hold?</p>
+      <p id="best-title" class="best-line"></p>
+    </div>
+  </div>
+
+  <!-- Level-up choice -->
+  <div id="levelup" class="overlay hidden">
+    <div class="panel">
+      <h2>THE EMBER GROWS</h2>
+      <p class="subtitle">Choose one boon — the night waits for no one.</p>
+      <div id="upgrade-cards"></div>
+      <p class="hint">Click a card, or press <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></p>
+    </div>
+  </div>
+
+  <!-- Pause -->
+  <div id="pause" class="overlay hidden">
+    <div class="panel">
+      <h2>PAUSED</h2>
+      <p class="subtitle">The Hollow hold their breath.</p>
+      <button id="resume-btn" class="btn btn-primary">RESUME</button>
+      <button id="restart-btn-pause" class="btn">RESTART RUN</button>
+    </div>
+  </div>
+
+  <!-- Game over -->
+  <div id="gameover" class="overlay hidden">
+    <div class="panel">
+      <div class="ember-glyph dim">✦</div>
+      <h2>THE LIGHT FADES</h2>
+      <p class="subtitle">The Hollow take the night — this time.</p>
+      <div id="final-stats"></div>
+      <p id="best-line" class="best-line"></p>
+      <button id="again-btn" class="btn btn-primary">↻ &nbsp;KINDLE AGAIN</button>
+      <p class="hint">or press <kbd>R</kbd> to restart</p>
+    </div>
+  </div>
+
+  <button id="mute-btn" title="Mute (M)">♪</button>
+</div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
